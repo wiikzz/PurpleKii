@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_pm25_dialog"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/popup_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp">
+
+        <RelativeLayout
+            android:id="@+id/popup_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/popup_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="提醒"
+                android:textColor="#666666"
+                android:textSize="18dp"
+                android:visibility="visible"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="#26000000"
+                android:visibility="visible"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/popup_title_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/quit_selector"
+            android:scaleType="center"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/popup_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp">
+        <TextView
+            android:id="@+id/popup_content_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="请输入提示内容！"
+            android:textColor="#666666"
+            android:textSize="15dp"/>
+        <ListView
+            android:id="@+id/popup_content_listview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:cacheColorHint="#FCFCFC"
+            android:background="#FCFCFC"
+            android:visibility="gone"/>
+        <TimePicker
+            android:id="@+id/popup_content_timepicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="-5dp"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:orientation="horizontal"
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginBottom="14dp">
+
+        <TextView
+            android:id="@+id/popup_button_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_button_grey_selector"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#666666"
+            android:textSize="17dp"/>
+
+        <TextView
+            android:id="@+id/popup_button_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dip"
+            android:background="@drawable/shape_button_blue_selector"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#3097fd"
+            android:textSize="17dp"/>
+
+    </LinearLayout>
+</LinearLayout>

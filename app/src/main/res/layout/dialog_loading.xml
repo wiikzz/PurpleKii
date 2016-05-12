@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_pm25_dialog"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/popup_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp">
+        <TextView
+            android:id="@+id/popup_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="提醒"
+            android:textColor="#666666"
+            android:textSize="18dp"
+            android:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="#26000000"
+            android:visibility="visible"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/popup_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="92dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp">
+        <ImageView
+            android:id="@+id/popup_content_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loading"/>
+
+        <TextView
+            android:id="@+id/popup_content_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="正在加载,请稍候..."
+            android:textColor="#666666"
+            android:textSize="17dp"/>
+    </LinearLayout>
+</LinearLayout>
