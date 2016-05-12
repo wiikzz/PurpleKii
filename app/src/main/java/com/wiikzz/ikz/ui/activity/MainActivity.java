@@ -3,20 +3,33 @@ package com.wiikzz.ikz.ui.activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wiikzz.ikz.R;
+import com.wiikzz.library.ui.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initVariables();
+        initViews(savedInstanceState);
+        loadViewData();
+    }
+
+    @Override
+    protected void initVariables() {
+        // nothing to do
+    }
+
+    @Override
+    protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -30,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void loadViewData() {
+        // nothing to do
     }
 
     @Override

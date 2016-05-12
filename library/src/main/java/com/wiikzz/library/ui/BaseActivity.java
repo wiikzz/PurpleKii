@@ -13,7 +13,7 @@ import java.lang.ref.SoftReference;
  * Created by wiikii on 16/4/5.
  * Copyright (C) 2014 wiikii. All rights reserved.
  */
-public abstract  class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
     protected final String TAG = getClass().getName();
     protected KiiHandler mHandler = new KiiHandler(this);
 
@@ -38,23 +38,19 @@ public abstract  class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityStack.instance().addActivity(this);
-
-        initVariables();
-        initViews(savedInstanceState);
-        loadViewData();
     }
 
     // 初始化变量
-    protected abstract void initVariables();
+    protected void initVariables() {}
 
     // 初始化View
-    protected abstract void initViews(Bundle savedInstanceState);
+    protected void initViews(Bundle savedInstanceState) {}
 
     // 加载需要显示的数据
-    protected abstract void loadViewData();
+    protected void loadViewData() {}
 
     // 处理Handler发来的Message
-    protected abstract void handleMessage(Message message);
+    protected void handleMessage(Message message) {}
 
     // 发送Message
     protected void sendMessage(int what) {

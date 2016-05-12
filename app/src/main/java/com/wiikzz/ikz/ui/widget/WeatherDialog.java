@@ -21,8 +21,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.tianqi2345.R;
-import com.tianqi2345.util.SystemUtils;
+import com.wiikzz.ikz.R;
+import com.wiikzz.ikz.util.SystemUtils;
 
 /**
  * Created by wiikii on 15/11/9.

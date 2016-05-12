@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Message;
 import android.os.Bundle;
 
-import com.tianqi2345.R;
+import com.wiikzz.ikz.R;
 import com.wiikzz.library.ui.BaseActivity;
 import com.wiikzz.library.util.Logger;
 import com.wiikzz.library.util.SharedPrefUtil;
@@ -17,6 +17,9 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initVariables();
+        initViews(savedInstanceState);
+        loadViewData();
         judgeJumpTo();
     }
 
