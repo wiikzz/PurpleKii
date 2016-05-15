@@ -10,6 +10,7 @@ import com.wiikzz.library.util.Logger;
 import com.wiikzz.library.util.SharedPrefUtil;
 
 public class SplashActivity extends BaseActivity {
+    // 兼顾开屏及跳转
 
     private final int MSG_GOTO_GUIDE = 0x1010;
     private final int MSG_GOTO_MAIN = 0x1011;

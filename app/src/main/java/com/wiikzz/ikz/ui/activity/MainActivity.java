@@ -7,9 +7,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
 
 import com.wiikzz.ikz.R;
 import com.wiikzz.library.ui.BaseActivity;
+
+import java.text.Format;
 
 public class MainActivity extends BaseActivity {
 
@@ -43,6 +47,33 @@ public class MainActivity extends BaseActivity {
                 }
             });
         }
+
+        NumberPicker hourPicker = (NumberPicker) findViewById(R.id.hourpicker);
+        NumberPicker minutePicker = (NumberPicker) findViewById(R.id.minuteicker);
+
+        NumberPicker.Formatter formatter = new NumberPicker.Formatter() {
+            @Override
+            public String format(int value) {
+                String tmpStr = String.valueOf(value);
+                if (value < 10) {
+                    tmpStr = "0" + tmpStr;
+                }
+                return tmpStr;
+            }
+        };
+
+        assert hourPicker != null;
+        hourPicker.setFormatter(formatter);
+        hourPicker.setMaxValue(24);
+        hourPicker.setMinValue(0);
+        hourPicker.setValue(9);
+
+        assert minutePicker != null;
+        minutePicker.setFormatter(formatter);
+        minutePicker.setMaxValue(60);
+        minutePicker.setMinValue(0);
+        minutePicker.setValue(49);
+
     }
 
     @Override
