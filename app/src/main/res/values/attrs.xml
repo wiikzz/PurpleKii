@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="tinyNumberPickerStyle" format="reference"/>
+
+    <declare-styleable name="tinyNumberPickerAttrs">
+        <attr name="selectionDivider" format="reference" />
+        <attr name="selectionDividerHeight" format="dimension" />
+        <attr name="selectionDividersDistance" format="dimension" />
+        <attr name="internalMinWidth" format="dimension|reference"/>
+        <attr name="internalMaxWidth" format="dimension|reference"/>
+        <attr name="internalMinHeight" format="dimension|reference"/>
+        <attr name="internalMaxHeight" format="dimension|reference"/>
+    </declare-styleable>
+
+</resources>
