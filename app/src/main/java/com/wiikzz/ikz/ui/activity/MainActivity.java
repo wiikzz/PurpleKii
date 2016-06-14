@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         mTextView = (TextView) findViewById(R.id.textView);
-
+        mTextView.setText("QAQ");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if(fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
