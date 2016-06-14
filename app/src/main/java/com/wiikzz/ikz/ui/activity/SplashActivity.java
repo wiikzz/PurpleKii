@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.wiikzz.ikz.R;
 import com.wiikzz.library.ui.BaseActivity;
-import com.wiikzz.library.util.Logger;
 import com.wiikzz.library.util.SharedPrefUtil;
 
 public class SplashActivity extends BaseActivity {
@@ -50,19 +49,15 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void handleMessage(Message message) {
         if(message.what == MSG_GOTO_GUIDE) {
-            // TODO: 16/4/5 goto guide page
-            Logger.d(TAG, "goto guide page");
-
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setClass(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setClass(this, GuideActivity.class);
             startActivity(intent);
             finish();
         }
         else if(message.what == MSG_GOTO_MAIN) {
-            // TODO: 16/4/5 goto main page
-            Logger.d(TAG, "goto main page");
-
             Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setClass(this, MainActivity.class);
             startActivity(intent);
             finish();
