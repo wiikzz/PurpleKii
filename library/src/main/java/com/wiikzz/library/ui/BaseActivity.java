@@ -13,7 +13,7 @@ import java.lang.ref.SoftReference;
  * Created by wiikii on 16/4/5.
  * Copyright (C) 2014 wiikii. All rights reserved.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected final String TAG = getClass().getName();
     protected KiiHandler mHandler = new KiiHandler(this);
 
@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             BaseActivity entityInstance = mInstance.get();
-            if(entityInstance != null) {
+            if (entityInstance != null) {
                 entityInstance.handleMessage(msg);
             }
         }
@@ -41,37 +41,66 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // 初始化变量
-    protected void initVariables() {}
+    protected abstract void initVariables();
 
     // 初始化View
-    protected void initViews(Bundle savedInstanceState) {}
+    protected abstract void initViews(Bundle savedInstanceState);
 
     // 加载需要显示的数据
-    protected void loadViewData() {}
+    protected abstract void loadViewData();
 
     // 处理Handler发来的Message
-    protected void handleMessage(Message message) {}
+    protected void handleMessage(Message message) {
+    }
 
     // 发送Message
     protected void sendMessage(int what) {
         sendMessage(what, null);
     }
+
     protected void sendMessage(int what, long delayTime) {
         sendMessage(what, null, delayTime);
     }
+
     protected void sendMessage(int what, Bundle bundle) {
         sendMessage(what, bundle, 0L);
     }
+
     protected void sendMessage(int what, Bundle bundle, long delayTime) {
         Message message = new Message();
         message.what = what;
         message.setData(bundle);
 
-        if(delayTime > 0L) {
+        if (delayTime > 0L) {
             mHandler.sendMessageDelayed(message, delayTime);
         } else {
             mHandler.sendMessage(message);
         }
+    }
+
+    // 取消Message
+    protected void removeMessages(int what) {
+        mHandler.removeMessages(what);
+    }
+
+    // 发送Runnable
+    protected void postRunnable(Runnable runnable) {
+        postRunnable(runnable, 0L);
+    }
+
+    protected void postRunnable(Runnable runnable, long delayTime) {
+        if (runnable != null) {
+            if (delayTime > 0L) {
+                mHandler.postDelayed(runnable, delayTime);
+            } else {
+                mHandler.post(runnable);
+            }
+        }
+    }
+
+    // 取消Runnable
+    protected void removeCallbacks(Runnable runnable) {
+        mHandler.removeCallbacks(runnable);
     }
 
     @Override

@@ -27,7 +27,7 @@ import com.wiikzz.ikz.util.SystemUtils;
 /**
  * Created by wiikii on 15/11/9.
  */
-public class WeatherDialog implements View.OnClickListener {
+public class PopupDialog implements View.OnClickListener {
 
     public enum WeatherDialogType {
         WEATHER_DIALOG_TYPE_NORMAL, // TextView
@@ -94,11 +94,11 @@ public class WeatherDialog implements View.OnClickListener {
     private OnDialogClickListener mDismissListener;
 
     public interface OnDialogClickListener {
-        void onClick(WeatherDialog dialog);
+        void onClick(PopupDialog dialog);
     }
 
-    public WeatherDialog(Context context) {
-        mDialog = new Dialog(context, R.style.PopupDialog) {
+    public PopupDialog(Context context) {
+        mDialog = new Dialog(context, R.style.AppTheme_PopupDialog) {
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
@@ -154,9 +154,9 @@ public class WeatherDialog implements View.OnClickListener {
                 mCancelView.setTextColor(mCancelButtonStyle.getColor());
                 mCancelView.setBackgroundResource(mCancelButtonStyle.getBackgroundResId());
 
-                mConfirmView.setOnClickListener(WeatherDialog.this);
-                mCancelView.setOnClickListener(WeatherDialog.this);
-                mCloseView.setOnClickListener(WeatherDialog.this);
+                mConfirmView.setOnClickListener(PopupDialog.this);
+                mCancelView.setOnClickListener(PopupDialog.this);
+                mCloseView.setOnClickListener(PopupDialog.this);
 
                 mCancelView.setVisibility(mShowCancelButton ? View.VISIBLE : View.GONE);
                 mCloseView.setVisibility(mShowCloseButton ? View.VISIBLE : View.GONE);
@@ -166,7 +166,7 @@ public class WeatherDialog implements View.OnClickListener {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
                         if (mDismissListener != null) {
-                            mDismissListener.onClick(WeatherDialog.this);
+                            mDismissListener.onClick(PopupDialog.this);
                         }
                     }
                 });
@@ -215,7 +215,7 @@ public class WeatherDialog implements View.OnClickListener {
         mHeaderViewMargin = SystemUtils.dip2px(context, 15);
     }
 
-    public WeatherDialog setTitleText(CharSequence titleText) {
+    public PopupDialog setTitleText(CharSequence titleText) {
         if(!TextUtils.isEmpty(titleText)) {
             this.mTitleText = titleText;
         }
@@ -223,11 +223,11 @@ public class WeatherDialog implements View.OnClickListener {
         return this;
     }
 
-    public WeatherDialog setContentText(CharSequence contentText) {
+    public PopupDialog setContentText(CharSequence contentText) {
         return setContentText(contentText, 15);
     }
 
-    public WeatherDialog setContentText(CharSequence contentText, int textSize) {
+    public PopupDialog setContentText(CharSequence contentText, int textSize) {
         if(!TextUtils.isEmpty(contentText)) {
             this.mContentText = contentText;
             this.mContentTextSize = textSize;
@@ -236,21 +236,21 @@ public class WeatherDialog implements View.OnClickListener {
         return this;
     }
 
-    public WeatherDialog setContentType(WeatherDialogType type) {
+    public PopupDialog setContentType(WeatherDialogType type) {
         this.mContentType = type;
         return this;
     }
 
-    public WeatherDialog setContentGravity(int gravity) {
+    public PopupDialog setContentGravity(int gravity) {
         this.mContentGravity = gravity;
         return this;
     }
 
-    public WeatherDialog setConfirmButtonText(CharSequence confirmText) {
+    public PopupDialog setConfirmButtonText(CharSequence confirmText) {
         return setConfirmButtonText(confirmText, WeatherButtonStyle.WEATHER_BUTTON_STYLE_BLUE);
     }
 
-    public WeatherDialog setConfirmButtonText(CharSequence confirmText, WeatherButtonStyle style) {
+    public PopupDialog setConfirmButtonText(CharSequence confirmText, WeatherButtonStyle style) {
         if(!TextUtils.isEmpty(confirmText)) {
             this.mConfirmButtonText = confirmText;
         }
@@ -259,11 +259,11 @@ public class WeatherDialog implements View.OnClickListener {
         return this;
     }
 
-    public WeatherDialog setCancelButtonText(CharSequence cancelText) {
+    public PopupDialog setCancelButtonText(CharSequence cancelText) {
         return setCancelButtonText(cancelText, WeatherButtonStyle.WEATHER_BUTTON_STYLE_GREY);
     }
 
-    public WeatherDialog setCancelButtonText(CharSequence cancelText, WeatherButtonStyle style) {
+    public PopupDialog setCancelButtonText(CharSequence cancelText, WeatherButtonStyle style) {
         if(!TextUtils.isEmpty(cancelText)) {
             this.mCancelButtonText = cancelText;
             this.mShowCancelButton = true;
@@ -273,47 +273,47 @@ public class WeatherDialog implements View.OnClickListener {
         return this;
     }
 
-    public WeatherDialog setConfirmButtonStyle(WeatherButtonStyle style) {
+    public PopupDialog setConfirmButtonStyle(WeatherButtonStyle style) {
         this.mConfirmButtonStyle = style;
         return this;
     }
 
-    public WeatherDialog setCancelButtonStyle(WeatherButtonStyle style) {
+    public PopupDialog setCancelButtonStyle(WeatherButtonStyle style) {
         this.mCancelButtonStyle = style;
         return this;
     }
 
-    public WeatherDialog setShowCancelButton(boolean show) {
+    public PopupDialog setShowCancelButton(boolean show) {
         this.mShowCancelButton = show;
         return this;
     }
 
-    public WeatherDialog setShowCloseButton(boolean show) {
+    public PopupDialog setShowCloseButton(boolean show) {
         this.mShowCloseButton = show;
         return this;
     }
 
-    public WeatherDialog setShowHeaderView(boolean show) {
+    public PopupDialog setShowHeaderView(boolean show) {
         this.mShowTitleLayout = show;
         return this;
     }
 
-    public WeatherDialog setOnConfirmListener(OnDialogClickListener listener) {
+    public PopupDialog setOnConfirmListener(OnDialogClickListener listener) {
         this.mConfirmListener = listener;
         return this;
     }
 
-    public WeatherDialog setOnCancelListener(OnDialogClickListener listener) {
+    public PopupDialog setOnCancelListener(OnDialogClickListener listener) {
         this.mCancelListener = listener;
         return this;
     }
 
-    public WeatherDialog setOnDismissListener(OnDialogClickListener listener) {
+    public PopupDialog setOnDismissListener(OnDialogClickListener listener) {
         this.mDismissListener = listener;
         return this;
     }
 
-    public WeatherDialog setCanceledOutside(boolean canceledOutside) {
+    public PopupDialog setCanceledOutside(boolean canceledOutside) {
         this.mCanceledOutside = canceledOutside;
         return this;
     }
@@ -354,47 +354,47 @@ public class WeatherDialog implements View.OnClickListener {
         mDialog.show();
     }
 
-    public static WeatherDialog getListDialog(Context context, CharSequence title, CharSequence contentText,
-                                          CharSequence confirmString, CharSequence cancelString,
-                                          OnDialogClickListener confirmListener) {
-        WeatherDialog weatherDialog = new WeatherDialog(context).setTitleText(title)
+    public static PopupDialog getListDialog(Context context, CharSequence title, CharSequence contentText,
+                                            CharSequence confirmString, CharSequence cancelString,
+                                            OnDialogClickListener confirmListener) {
+        PopupDialog popupDialog = new PopupDialog(context).setTitleText(title)
                 .setContentText(contentText)
                 .setContentType(WeatherDialogType.WEATHER_DIALOG_TYPE_LISTV)
                 .setConfirmButtonText(confirmString)
                 .setCancelButtonText(cancelString)
                 .setOnConfirmListener(confirmListener);
-        return weatherDialog;
+        return popupDialog;
     }
 
-    public static WeatherDialog getTimePickerDialog(Context context, CharSequence title, CharSequence contentText,
-                                          CharSequence confirmString, CharSequence cancelString,
-                                          OnDialogClickListener confirmListener) {
-        WeatherDialog weatherDialog = new WeatherDialog(context).setTitleText(title)
+    public static PopupDialog getTimePickerDialog(Context context, CharSequence title, CharSequence contentText,
+                                                  CharSequence confirmString, CharSequence cancelString,
+                                                  OnDialogClickListener confirmListener) {
+        PopupDialog popupDialog = new PopupDialog(context).setTitleText(title)
                 .setContentText(contentText)
                 .setContentType(WeatherDialogType.WEATHER_DIALOG_TYPE_TIMESET)
                 .setConfirmButtonText(confirmString)
                 .setCancelButtonText(cancelString)
                 .setOnConfirmListener(confirmListener);
-        return weatherDialog;
+        return popupDialog;
     }
 
-    public static WeatherDialog getNormalDialog(Context context, CharSequence title, CharSequence contentText,
-                                            CharSequence confirmString, CharSequence cancelString,
-                                            OnDialogClickListener confirmListener) {
+    public static PopupDialog getNormalDialog(Context context, CharSequence title, CharSequence contentText,
+                                              CharSequence confirmString, CharSequence cancelString,
+                                              OnDialogClickListener confirmListener) {
         return getNormalDialog(context, title, contentText, confirmString, cancelString, confirmListener, null, null);
     }
 
-    public static WeatherDialog getNormalDialog(Context context, CharSequence title, CharSequence contentText,
-                                            CharSequence confirmString, CharSequence cancelString,
-                                            OnDialogClickListener confirmListener, OnDialogClickListener cancelListener) {
+    public static PopupDialog getNormalDialog(Context context, CharSequence title, CharSequence contentText,
+                                              CharSequence confirmString, CharSequence cancelString,
+                                              OnDialogClickListener confirmListener, OnDialogClickListener cancelListener) {
         return getNormalDialog(context, title, contentText, confirmString, cancelString, confirmListener, cancelListener, null);
     }
 
-    public static WeatherDialog getNormalDialog(Context context, CharSequence title, CharSequence contentText,
-                                  CharSequence confirmString, CharSequence cancelString,
-                                  OnDialogClickListener confirmListener, OnDialogClickListener cancelListener,
-                                  OnDialogClickListener dismissListener) {
-        WeatherDialog weatherDialog = new WeatherDialog(context).setTitleText(title)
+    public static PopupDialog getNormalDialog(Context context, CharSequence title, CharSequence contentText,
+                                              CharSequence confirmString, CharSequence cancelString,
+                                              OnDialogClickListener confirmListener, OnDialogClickListener cancelListener,
+                                              OnDialogClickListener dismissListener) {
+        PopupDialog popupDialog = new PopupDialog(context).setTitleText(title)
                 .setContentText(contentText)
                 .setContentType(WeatherDialogType.WEATHER_DIALOG_TYPE_NORMAL)
                 .setConfirmButtonText(confirmString)
@@ -402,6 +402,6 @@ public class WeatherDialog implements View.OnClickListener {
                 .setOnConfirmListener(confirmListener)
                 .setOnCancelListener(cancelListener)
                 .setOnDismissListener(dismissListener);
-        return weatherDialog;
+        return popupDialog;
     }
 }

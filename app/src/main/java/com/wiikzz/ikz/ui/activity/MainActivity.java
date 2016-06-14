@@ -8,14 +8,17 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.wiikzz.ikz.R;
+import com.wiikzz.ikz.ui.widget.TinyNumberPicker;
 import com.wiikzz.library.ui.BaseActivity;
 
 import java.text.Format;
 
 public class MainActivity extends BaseActivity {
+    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class MainActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mTextView = (TextView) findViewById(R.id.textView);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if(fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
@@ -48,31 +53,21 @@ public class MainActivity extends BaseActivity {
             });
         }
 
-        NumberPicker hourPicker = (NumberPicker) findViewById(R.id.hourpicker);
-        NumberPicker minutePicker = (NumberPicker) findViewById(R.id.minuteicker);
 
-        NumberPicker.Formatter formatter = new NumberPicker.Formatter() {
+        TinyNumberPicker tinyNumberPicker = (TinyNumberPicker) findViewById(R.id.tinyNumberPicker);
+        assert tinyNumberPicker != null;
+        tinyNumberPicker.setMinValue(0);
+        tinyNumberPicker.setMaxValue(5);
+        tinyNumberPicker.setValue(2);
+
+        tinyNumberPicker.setDisplayedValues(new String[] {"00", "10", "20", "30", "40", "50"});
+
+        tinyNumberPicker.setOnValueChangedListener(new TinyNumberPicker.OnValueChangeListener() {
             @Override
-            public String format(int value) {
-                String tmpStr = String.valueOf(value);
-                if (value < 10) {
-                    tmpStr = "0" + tmpStr;
-                }
-                return tmpStr;
+            public void onValueChange(TinyNumberPicker picker, int oldVal, int newVal) {
+                mTextView.setText("Last:" + oldVal + ", Now:" + newVal);
             }
-        };
-
-        assert hourPicker != null;
-        hourPicker.setFormatter(formatter);
-        hourPicker.setMaxValue(24);
-        hourPicker.setMinValue(0);
-        hourPicker.setValue(9);
-
-        assert minutePicker != null;
-        minutePicker.setFormatter(formatter);
-        minutePicker.setMaxValue(60);
-        minutePicker.setMinValue(0);
-        minutePicker.setValue(49);
+        });
 
     }
 

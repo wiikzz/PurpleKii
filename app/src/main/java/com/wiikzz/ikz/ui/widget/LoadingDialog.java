@@ -44,7 +44,7 @@ public class LoadingDialog {
     }
 
     public LoadingDialog(Context context) {
-        mDialog = new Dialog(context, R.style.PopupDialog) {
+        mDialog = new Dialog(context, R.style.AppTheme_PopupDialog) {
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
